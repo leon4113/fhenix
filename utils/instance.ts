@@ -1,5 +1,10 @@
 import { HardhatRuntimeEnvironment } from "hardhat/types/runtime";
 
+export interface FheInstance {
+  instance: any;
+  permission: any;
+}
+
 export async function createPermitForContract(
   hre: HardhatRuntimeEnvironment,
   contractAddress: string,
