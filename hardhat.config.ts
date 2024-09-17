@@ -9,6 +9,7 @@ import "fhenix-hardhat-network";
 import "hardhat-deploy";
 import {HardhatUserConfig} from "hardhat/config";
 import {resolve} from "path";
+import { NetworkUserConfig } from "hardhat/types";
 
 // DOTENV_CONFIG_PATH is used to specify the path to the .env file for example in the CI
 const dotenvConfigPath: string = process.env.DOTENV_CONFIG_PATH || "./.env";
@@ -17,10 +18,10 @@ dotenvConfig({ path: resolve(__dirname, dotenvConfigPath) });
 const TESTNET_CHAIN_ID = 8008135;
 const TESTNET_RPC_URL = "https://api.helium.fhenix.zone";
 
-const testnetConfig = {
-    chainId: TESTNET_CHAIN_ID,
-    url: TESTNET_RPC_URL,
-}
+const testnetConfig: NetworkUserConfig = {
+  chainId: TESTNET_CHAIN_ID,
+  url: TESTNET_RPC_URL,
+};
 
 // Select either private keys or mnemonic from .env file or environment variables
 const keys = process.env.KEY;
@@ -46,7 +47,7 @@ const config: HardhatUserConfig = {
     testnet: testnetConfig,
   },
   typechain: {
-    outDir: "types",
+    outDir: "typechain-types",
     target: "ethers-v6",
   },
 };
